@@ -16,9 +16,7 @@ async function main() {
     res.json('whassup');
   })
 
-server.use(cors({
-  origin:["http://localhost:3000","https://mynotes-t5w6.onrender.com"]
-}))
+server.use(cors())
 server.use(express.json());
 server.use('/api/auth',authRouter.Route);
 server.use('/api/notes',userRouter.Route);
