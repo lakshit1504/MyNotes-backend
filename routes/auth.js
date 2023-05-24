@@ -101,7 +101,7 @@ Route.post(
 
 Route.post("/userDetails",fetchuser,async (req, res) => {
   try {
-    let users = await user.findOne({userId:"req.user.id"}).select("-password");
+    let users = await user.findOne({userId:req.user.id}).select("-password");
     res.send(users)
   } catch (error) {
     console.log(error.message);

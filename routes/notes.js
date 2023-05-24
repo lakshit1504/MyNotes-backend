@@ -70,7 +70,7 @@ Route.put("/updatenote/:id", fetchuser,async (req, res) => {
 
         // find the not to be updated and update it
 
-        let note=await Notes.findById({id:"req.params.id"});
+        let note=await Notes.findById(req.params.id);
         
         if(!note){
             return res.status(404).send("Not found");
@@ -78,7 +78,7 @@ Route.put("/updatenote/:id", fetchuser,async (req, res) => {
         if(note.user.toString() !== req.user.id){
             return res.status(401).send("Not Allowed");
         }
-        note=await Notes.findByIdAndUpdate({id: "req.params.id"},{$set:newNote},{new:true});     
+        note=await Notes.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true});     
         res.json({note});
 
 
