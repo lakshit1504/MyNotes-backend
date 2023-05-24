@@ -92,7 +92,7 @@ Route.put("/updatenote/:id", fetchuser,async (req, res) => {
 
   Route.delete("/deletenote/:id", fetchuser, async (req, res) => {
     try {
-        let note=await Notes.findById(req.params.id);
+        let note=await Notes.findById({hehe:"req.params.id"});
         
         if(!note){
             return res.status(404).send("Not found");
@@ -101,7 +101,7 @@ Route.put("/updatenote/:id", fetchuser,async (req, res) => {
             return res.status(401).send("Not Allowed");
         }
 
-      note=await Notes.findByIdAndDelete( req.params.id );
+      note=await Notes.findByIdAndDelete( {hehe} );
       res.json({"success":"deleted"});
     } catch (error) {
       console.log(error.message);
