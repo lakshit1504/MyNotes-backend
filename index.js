@@ -17,7 +17,7 @@ async function main() {
   })
 
 server.use(cors({
-  origin:["http://localhost:3000","https://mynotes-api-047i.onrender"]
+  origin:["http://localhost:3000","https://mynotes-t5w6.onrender.com"]
 }))
 server.use(express.json());
 server.use('/api/auth',authRouter.Route);
