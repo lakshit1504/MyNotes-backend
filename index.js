@@ -1,6 +1,9 @@
 const express=require('express');
 const server=express();
 const mongoose = require('mongoose');
+
+mongoose.set('strictQuery',false);
+
 main().catch(err => console.log(err));
 const Route=express.Router(); 
 const userRouter=require('./routes/notes')
@@ -8,7 +11,7 @@ const authRouter=require('./routes/auth')
 var cors=require('cors')
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/iNotebook');
+    await mongoose.connect('mongodb+srv://lakshitkujuneja:Ha7BtiC4OVl37ySq@cluster0.cn69522.mongodb.net/?retryWrites=true&w=majority');
         console.log('database connected');
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
   }
@@ -16,7 +19,9 @@ async function main() {
     res.json('whassup');
   })
 
-server.use(cors())
+server.use(cors({
+  origin :["http://localhost:/3000","https://mynotes-api-047i.onrender.com"]
+}))
 server.use(express.json());
 server.use('/api/auth',authRouter.Route);
 server.use('/api/notes',userRouter.Route);
