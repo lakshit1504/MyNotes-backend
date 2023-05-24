@@ -73,7 +73,7 @@ Route.post(
 
     const { email, password } = req.body;
     try {
-      let users = await user.findOne({ email });
+      let users = await user.findOne({email});
       if (!users) {
         return res.status(400).json({ error: "try with right credentials" });
       }
@@ -101,7 +101,8 @@ Route.post(
 
 Route.post("/userDetails",fetchuser,async (req, res) => {
   try {
-    let users = await user.findOne({userId:req.user.id}).select("-password");
+    let userId = req.user.id;
+    let users = await user.findOne(userId).select("-password");
     res.send(users)
   } catch (error) {
     console.log(error.message);
