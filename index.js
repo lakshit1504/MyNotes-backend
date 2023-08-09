@@ -27,5 +27,5 @@ server.use('/api/auth',authRouter.Route);
 server.use('/api/notes',userRouter.Route);
 
   server.listen(8080,(req,res)=>{
-    console.log('iNoteBook listening at port 8080')
+    console.log('MyNotes listening at port 8080')
 })
