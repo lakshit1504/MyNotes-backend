@@ -10,7 +10,7 @@ const NotesSchema = new Schema({
     title: {
         type:String,
         require:true
-    }, // String is shorthand for {type: String}
+    }, 
     description:{
         type: String,
         require:true,
